@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    />
+    <script>
+      // Let WebKit account for the status bar as an inset in Home Screen apps.
+      if (navigator.standalone) {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        viewport.content = viewport.content.replace("viewport-fit=cover", "viewport-fit=auto");
+        document.documentElement.classList.add("ios-home-screen");
+      }
+    </script>
+    <title>EveryNickel</title>
+    <meta name="description" content="Zero-based monthly budgeting." />
+    <meta name="theme-color" content="#1B8533" />
+    <meta name="color-scheme" content="dark" />
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="EveryNickel" />
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+        background-color: #091014;
+      }
+      body {
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+    <style id="ios-standalone">
+      /* Give WebKit a painted fixed edge before React mounts. The top-edge
+         probe starts 4px inside its fixed-layout viewport and can sample a
+         2px strip. Extend past the safe area to cover either viewport origin,
+         with at least 11px so WebKit can read the box's background color. */
+      .ios-top-edge {
+        display: none;
+      }
+      /* iOS 26 (WebKit bug 301108) can size the page to the screen minus
+         the status bar. Add the inset back, capped at the large viewport. */
+      html.ios-home-screen {
+        height: min(100lvh, calc(100% + env(safe-area-inset-top)));
+      }
+      .ios-home-screen .ios-top-edge {
+        display: block;
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 30;
+        height: max(11px, calc(env(safe-area-inset-top) + 6px));
+        background-color: #1b8533;
+        pointer-events: none;
+      }
+    </style>
+  <meta name="theme-color" content="#1B8533">
+<link rel="icon" href="/favicon.ico"/></head>
+
+  <body>
+    <div class="ios-top-edge" aria-hidden="true"></div>
+    <noscript>You need to enable JavaScript to run EveryNickel.</noscript>
+    <div id="root"></div>
+  <script src="/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js" defer></script><script src="/_expo/static/js/web/__common-e47c6f056e146129a5051085990e88d0.js" defer></script><script src="/_expo/static/js/web/entry-81b72f1f558582a8554afe9cef229fb6.js" defer></script>
+</body>
+</html>
